@@ -1,0 +1,44 @@
+MobileElement readMoreButton = (MobileElement) driver.findElement(MobileBy.id("com.lambdatest.proverbial:id/readMoreButton"));
+readMoreButton.click();
+Thread.sleep(3000);
+
+MobileElement backButtonReadMorePage = (MobileElement) driver.findElement(MobileBy.id("com.lambdatest.proverbial:id/backButtonReadMorePage"));
+backButtonReadMorePage.click();
+Thread.sleep(3000);
+
+MobileElement Location = (MobileElement) driver.findElementByAccessibilityId("Location");
+Location.click();  //we don't have xpath for going back
+Thread.sleep(3000);
+
+driver.navigate().back();
+Thread.sleep(2000);
+
+MobileElement Browser = (MobileElement) driver.findElementByXPath("//android.widget.FrameLayout[@content-desc=\"Browser\"]/android.widget.FrameLayout/android.widget.ImageView");
+Browser.click();
+Thread.sleep(3000);
+
+MobileElement url = (MobileElement) driver.findElement(MobileBy.id("com.lambdatest.proverbial:id/url"));
+url.sendKeys("https://www.lambdatest.com");
+MobileElement find = (MobileElement) driver.findElement(MobileBy.id("com.lambdatest.proverbial:id/find"));
+find.click();
+Thread.sleep(3000);
+
+MobileElement Home = (MobileElement) driver.findElementByAccessibilityId("Home");
+Home.click();
+
+MobileElement Drawer = (MobileElement) driver.findElementByAccessibilityId("drawer open");
+Drawer.click();
+Thread.sleep(3000);
+
+MobileElement Notification = (MobileElement) driver.findElementByXPath("//android.widget.CheckedTextView[contains(@text,\"Push Notification\")]");
+Notification.click();
+
+MobileElement closeDrawer = (MobileElement) driver.findElementByAccessibilityId("drawer Closed");
+closeDrawer.click();
+Thread.sleep(2000);
+
+
+} catch (AssertionError a) {
+((JavascriptExecutor) driver).executeScript("lambda-status=failed");
+a.printStackTrace();
+}
